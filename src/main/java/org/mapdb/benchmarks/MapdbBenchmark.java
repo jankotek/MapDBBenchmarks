@@ -5,7 +5,7 @@ import org.mapdb.DBMaker;
 
 import java.util.*;
 
-public class MapdbBenchmark implements Main.Bench{
+public class MapdbBenchmark implements Bench{
     DB db;
     Map<String, String> map;
 

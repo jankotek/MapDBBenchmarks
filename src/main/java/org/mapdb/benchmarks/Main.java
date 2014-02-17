@@ -35,11 +35,11 @@ public class Main {
         }
         List<Bench> list = new ArrayList<Bench>();
         List<String> decs = new ArrayList<String>();
-        list.add(new RedisBenchmark());
+        list.add((Bench) new RedisBenchmark());
         decs.add("Redis");
-        list.add(new MapdbBenchmark());
+        list.add((Bench) new MapdbBenchmark());
         decs.add("MapDB in memory");
-        list.add(new ConcurrentSkipListMapBenchmark());
+        list.add((Bench) new ConcurrentSkipListMapBenchmark());
         decs.add("MapDB skip list");
         Map<String, Integer> ret = new HashMap<String, Integer>();
         for (int a = list.size() - 1; a >= 0; a--) {
