@@ -22,7 +22,7 @@ public class Main {
         int size = 5000;
         int time = 5000;
         Random rand = new Random();
-        String fileName = "data.json";
+        String fileName = "benchmarks";
         for (int i = 0; i < args.length; i++) {
 
             if (args[i].toLowerCase().equals("-t")) {
@@ -35,13 +35,13 @@ public class Main {
         }
         List<Bench> list = new ArrayList<Bench>();
         List<String> decs = new ArrayList<String>();
+        Map<String, HashMap<String, Integer>> ret = new HashMap<String, HashMap<String, Integer>>();
         list.add((Bench) new RedisBenchmark());
         decs.add("Redis");
         list.add((Bench) new MapdbBenchmark());
         decs.add("MapDB in memory");
         list.add((Bench) new ConcurrentSkipListMapBenchmark());
         decs.add("MapDB skip list");
-        Map<String, Integer> ret = new HashMap<String, Integer>();
         for (int a = list.size() - 1; a >= 0; a--) {
             System.out.println(decs.get(a));
             Bench b = list.get(a);
@@ -62,15 +62,19 @@ public class Main {
                 b.put(k, k);
             }
             System.out.println(w);
-            ret.put(decs.get(a) + " read", r);
-            ret.put(decs.get(a) + " write", w);
-
+            ret.put(decs.get(a), new HashMap<String, Integer>());
+            ret.get(decs.get(a)).put("read", r);
+            ret.get(decs.get(a)).put("write", w);
             list.remove(b);
         }
 
-        PrintWriter writer = new PrintWriter(fileName, "UTF-8");
+        PrintWriter writer = new PrintWriter(fileName+".json", "UTF-8");
         writer.println(new JSONObject(ret));
         writer.close();
+        writer = new PrintWriter(fileName+"-data.js", "UTF-8");
+        writer.println("var basic_data="+(new JSONObject(ret))+";");
+        writer.close();
+
         System.out.println("Creating JSON data file " + fileName);
     }
 }

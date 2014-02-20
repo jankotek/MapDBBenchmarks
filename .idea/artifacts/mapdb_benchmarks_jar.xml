@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="mapdb-benchmarks:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/mapdb_benchmarks_jar</output-path>
+    <root id="archive" name="mapdb-benchmarks.jar">
+      <element id="module-output" name="mapdb-benchmarks" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/json/json/20131018/json-20131018.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/commons/commons-pool2/2.0/commons-pool2-2.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/redis/clients/jedis/2.2.1/jedis-2.2.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-pool/commons-pool/1.6/commons-pool-1.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mapdb/mapdb/0.9.9/mapdb-0.9.9.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
